@@ -12,7 +12,7 @@ func _ready():
 func play(song: AudioStream) -> void:
 	if(!song || is_same_song(song)): return;
 	current_song = song;
-	if(GLOBAL.on_bike): return;
+	#if(GLOBAL.on_bike): return;
 	stop_and_play(song);
 
 func play_bike() -> void: if(!GLOBAL.on_bike): stop_and_play(LIBRARIES.SOUNDS.BICYCLE);

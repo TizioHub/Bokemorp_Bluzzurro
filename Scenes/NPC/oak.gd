@@ -176,7 +176,7 @@ func _on_bike_inside() -> void:
 	GLOBAL.start_dialog.emit(13);
 
 func get_on_bike():
-	AUDIO.play_bike();
+	#AUDIO.play_bike();
 	if(!GLOBAL.bike_sound): 
 		play_audio(LIBRARIES.SOUNDS.BIKE_SOUND);
 	GLOBAL.on_bike = true;
@@ -187,8 +187,8 @@ func get_on_bike():
 
 func get_off_bike(stop_sound = true):
 	#Se vuoi ripristinarlo a com'era, metti "stop_sound = true" fra le () della funzione
-	if(stop_sound): 
-		AUDIO.stop_and_play_last_song();
+	#if(stop_sound): 
+	#	AUDIO.stop_and_play_last_song();
 	GLOBAL.on_bike = false;
 	GLOBAL.bike_sound = false;
 	sprite.texture = oak_texture;
