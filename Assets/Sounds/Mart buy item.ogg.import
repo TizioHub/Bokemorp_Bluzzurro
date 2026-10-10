@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://47ltrof6ac0k"
+path="res://.godot/imported/Mart buy item.ogg-31ca6df6b192a0bc59aeb73739637197.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Mart buy item.ogg"
+dest_files=["res://.godot/imported/Mart buy item.ogg-31ca6df6b192a0bc59aeb73739637197.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

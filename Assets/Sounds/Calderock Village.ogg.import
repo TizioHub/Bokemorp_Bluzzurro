@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmhdwvt17tqfy"
+path="res://.godot/imported/Calderock Village.ogg-4f1454d3935f0977eacb887358fce257.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Calderock Village.ogg"
+dest_files=["res://.godot/imported/Calderock Village.ogg-4f1454d3935f0977eacb887358fce257.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dj4gik1sanias"
+path="res://.godot/imported/route 1.mp3-1a84f3796404afe9cfa2ae1ad7f0a2f7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/OST/route 1.mp3"
+dest_files=["res://.godot/imported/route 1.mp3-1a84f3796404afe9cfa2ae1ad7f0a2f7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csudv08r6dbtd"
+path="res://.godot/imported/Quick Attack.mp3-68997f9329ff35091186e6c8aebec88d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Moves/Quick Attack.mp3"
+dest_files=["res://.godot/imported/Quick Attack.mp3-68997f9329ff35091186e6c8aebec88d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

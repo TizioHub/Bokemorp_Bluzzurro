@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bn1lhd3it8fty"
+path="res://.godot/imported/PC open.ogg-7ebe54e9a1f466d27ec59d739a5c709d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/PC open.ogg"
+dest_files=["res://.godot/imported/PC open.ogg-7ebe54e9a1f466d27ec59d739a5c709d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

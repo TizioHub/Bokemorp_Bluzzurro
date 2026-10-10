@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cvo8fv1xyt71r"
+path="res://.godot/imported/Battle damage weak.ogg-39807af5914512c1ecb199023822ddaf.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Battle damage weak.ogg"
+dest_files=["res://.godot/imported/Battle damage weak.ogg-39807af5914512c1ecb199023822ddaf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

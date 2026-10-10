@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://duqc36ysfu0hs"
+path="res://.godot/imported/Use item in party.ogg-cb240fe8a966dc0a2688f3e78d0ab20e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Use item in party.ogg"
+dest_files=["res://.godot/imported/Use item in party.ogg-cb240fe8a966dc0a2688f3e78d0ab20e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

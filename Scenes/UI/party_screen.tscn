@@ -1,0 +1,1390 @@
+[gd_scene load_steps=43 format=3 uid="uid://giwx2ioysoot"]
+
+[ext_resource type="Texture2D" uid="uid://b84kos15c1maw" path="res://Assets/UI/party_background.png" id="1_hwxdf"]
+[ext_resource type="Script" path="res://Scenes/UI/party_screen.gd" id="1_nyw7a"]
+[ext_resource type="Texture2D" uid="uid://bmup1q8o4nrgm" path="res://Assets/UI/main_pokemon_background.png" id="1_urug2"]
+[ext_resource type="Texture2D" uid="uid://0p10ayivywtg" path="res://Assets/UI/Pokemon/charmander/icon.png" id="3_mko3b"]
+[ext_resource type="Theme" uid="uid://cun343t873x4o" path="res://Scenes/UI/Menu/menu_theme.tres" id="3_r2g54"]
+[ext_resource type="FontFile" uid="uid://b3ynf240onmy4" path="res://Assets/Fonts/pkmnfl.ttf" id="4_tjowx"]
+[ext_resource type="Texture2D" uid="uid://cce8ahdqmj40s" path="res://Assets/UI/gender_icons.png" id="5_2q8x5"]
+[ext_resource type="Texture2D" uid="uid://uaqoxfq6qhvd" path="res://Assets/UI/green_bar.png" id="6_utcu8"]
+[ext_resource type="Texture2D" uid="uid://cygndnup0am01" path="res://Assets/UI/standby_pokemon_background.png" id="7_8kd4u"]
+[ext_resource type="Texture2D" uid="uid://dcvfw8p8val8q" path="res://Assets/UI/exit_background_button.png" id="8_lcc1j"]
+[ext_resource type="Texture2D" uid="uid://buxpvab6noqaa" path="res://Assets/UI/held_item.png" id="11_3svhx"]
+[ext_resource type="FontFile" uid="uid://dgrb6vwb25lwm" path="res://Assets/Fonts/power clear.ttf" id="11_20qo2"]
+[ext_resource type="Texture2D" uid="uid://bopa3lb8giu8a" path="res://Assets/UI/fnt.png" id="12_i0hvq"]
+[ext_resource type="Texture2D" uid="uid://d3dxw0bsf6jxo" path="res://Assets/UI/marker_orange.png" id="12_srpur"]
+[ext_resource type="Texture2D" uid="uid://bfnlj6t53rl5p" path="res://Assets/UI/ui_arrow_left_right.png" id="13_186ck"]
+
+[sub_resource type="Animation" id="Animation_t7ymx"]
+resource_name = "Dead"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokemon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokemon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 35)]
+}
+
+[sub_resource type="Animation" id="Animation_765ie"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokemon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokemon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 35)]
+}
+
+[sub_resource type="Animation" id="Animation_sfu3h"]
+resource_name = "Selected"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokemon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokemon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(15, 35), Vector2(15, 29), Vector2(15, 35), Vector2(15, 29)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dop7h"]
+_data = {
+"Dead": SubResource("Animation_t7ymx"),
+"Idle": SubResource("Animation_765ie"),
+"Selected": SubResource("Animation_sfu3h")
+}
+
+[sub_resource type="Animation" id="Animation_fr41x"]
+resource_name = "SwitchIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-278, -48), Vector2(-192, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_md6ek"]
+resource_name = "SwitchOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-192, -48), Vector2(-278, -48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t73bf"]
+_data = {
+"SwitchIn": SubResource("Animation_fr41x"),
+"SwitchOut": SubResource("Animation_md6ek")
+}
+
+[sub_resource type="Animation" id="Animation_bkp5n"]
+resource_name = "Dead"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokemon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokemon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_vn8e7"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokemon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokemon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_4wwwv"]
+resource_name = "Selected"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pokemon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pokemon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(5, 18), Vector2(5, 12), Vector2(5, 18), Vector2(5, 12)]
+}
+
+[sub_resource type="Animation" id="Animation_avdih"]
+resource_name = "SwitchOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Slots/Fourth:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-94.0, 58.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mswsx"]
+_data = {
+"Dead": SubResource("Animation_bkp5n"),
+"Idle": SubResource("Animation_vn8e7"),
+"Selected": SubResource("Animation_4wwwv"),
+"SwitchOut": SubResource("Animation_avdih")
+}
+
+[sub_resource type="Animation" id="Animation_tm6cd"]
+resource_name = "SwitchIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(58, -48), Vector2(-94, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_pkgby"]
+resource_name = "SwitchOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-94, -48), Vector2(58, -48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1dy6"]
+_data = {
+"SwitchIn": SubResource("Animation_tm6cd"),
+"SwitchOut": SubResource("Animation_pkgby")
+}
+
+[sub_resource type="Animation" id="Animation_vcqgf"]
+resource_name = "SwitchIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(58, -24), Vector2(-94, -24)]
+}
+
+[sub_resource type="Animation" id="Animation_thm0n"]
+resource_name = "SwitchOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-94, -24), Vector2(58, -24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ufkc2"]
+_data = {
+"SwitchIn": SubResource("Animation_vcqgf"),
+"SwitchOut": SubResource("Animation_thm0n")
+}
+
+[sub_resource type="Animation" id="Animation_txfh8"]
+resource_name = "SwitchIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [58.0, -94.0]
+}
+
+[sub_resource type="Animation" id="Animation_ov2b2"]
+resource_name = "SwitchOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-94.0, 58.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wp3f2"]
+_data = {
+"SwitchIn": SubResource("Animation_txfh8"),
+"SwitchOut": SubResource("Animation_ov2b2")
+}
+
+[sub_resource type="Animation" id="Animation_e2u4x"]
+resource_name = "SwitchIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(58, 24), Vector2(-94, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_1kcay"]
+resource_name = "SwitchOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-94, 24), Vector2(58, 24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yc77i"]
+_data = {
+"SwitchIn": SubResource("Animation_e2u4x"),
+"SwitchOut": SubResource("Animation_1kcay")
+}
+
+[sub_resource type="Animation" id="Animation_lvh5m"]
+resource_name = "SwitchIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(58, 48), Vector2(-94, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_rlsvg"]
+resource_name = "SwitchOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-94, 48), Vector2(58, 48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h7o6p"]
+_data = {
+"SwitchIn": SubResource("Animation_lvh5m"),
+"SwitchOut": SubResource("Animation_rlsvg")
+}
+
+[node name="PartyScreen" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_nyw7a")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 240.0
+offset_bottom = 160.0
+auto_translate = false
+localize_numeral_system = false
+texture = ExtResource("1_hwxdf")
+stretch_mode = 3
+
+[node name="Panel" type="Sprite2D" parent="Background"]
+position = Vector2(211, 144)
+texture = ExtResource("8_lcc1j")
+hframes = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 136.0
+offset_right = 176.0
+offset_bottom = 155.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/default_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_colors/font_shadow_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/normal_font = ExtResource("11_20qo2")
+theme_override_font_sizes/normal_font_size = 11
+text = "Choose a POKéMON."
+
+[node name="Slots" type="Node2D" parent="."]
+position = Vector2(192, 48)
+
+[node name="First" type="Node2D" parent="Slots"]
+visible = false
+position = Vector2(-192, -48)
+
+[node name="Panel" type="Sprite2D" parent="Slots/First"]
+position = Vector2(44, 46.5)
+texture = ExtResource("1_urug2")
+hframes = 2
+
+[node name="Pokemon" type="Sprite2D" parent="Slots/First"]
+position = Vector2(15, 35)
+texture = ExtResource("3_mko3b")
+vframes = 2
+frame = 1
+
+[node name="Gender" type="Sprite2D" parent="Slots/First"]
+position = Vector2(74, 47)
+texture = ExtResource("5_2q8x5")
+hframes = 2
+frame = 1
+
+[node name="Name" type="RichTextLabel" parent="Slots/First"]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 92.0
+offset_bottom = 40.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "CHARMANDER"
+
+[node name="Level" type="RichTextLabel" parent="Slots/First"]
+texture_filter = 1
+clip_contents = false
+offset_left = 51.0
+offset_top = 43.0
+offset_right = 61.0
+offset_bottom = 52.0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "5"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+language = "en"
+
+[node name="TotalHP" type="RichTextLabel" parent="Slots/First"]
+clip_contents = false
+offset_left = 66.0
+offset_top = 63.0
+offset_right = 80.0
+offset_bottom = 72.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 8
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="RemainHP" type="RichTextLabel" parent="Slots/First"]
+clip_contents = false
+offset_left = 44.0
+offset_top = 63.0
+offset_right = 58.0
+offset_bottom = 72.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 8
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="Health" type="Sprite2D" parent="Slots/First"]
+position = Vector2(32, 56)
+scale = Vector2(0.5, 1)
+texture = ExtResource("6_utcu8")
+centered = false
+
+[node name="Held_Item" type="TextureRect" parent="Slots/First"]
+visible = false
+offset_left = 18.0
+offset_top = 45.0
+offset_right = 25.0
+offset_bottom = 52.0
+texture = ExtResource("11_3svhx")
+stretch_mode = 2
+
+[node name="Status" type="TextureRect" parent="Slots/First"]
+visible = false
+offset_left = 20.0
+offset_top = 63.0
+offset_right = 40.0
+offset_bottom = 71.0
+scale = Vector2(1, 0.8)
+texture = ExtResource("12_i0hvq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slots/First"]
+libraries = {
+"": SubResource("AnimationLibrary_dop7h")
+}
+
+[node name="Switch" type="AnimationPlayer" parent="Slots/First"]
+libraries = {
+"": SubResource("AnimationLibrary_t73bf")
+}
+
+[node name="Second" type="Node2D" parent="Slots"]
+visible = false
+position = Vector2(-94, -48)
+
+[node name="Panel" type="Sprite2D" parent="Slots/Second"]
+position = Vector2(65, 21)
+texture = ExtResource("7_8kd4u")
+hframes = 2
+
+[node name="Pokemon" type="Sprite2D" parent="Slots/Second"]
+position = Vector2(5, 18)
+texture = ExtResource("3_mko3b")
+vframes = 2
+frame = 1
+
+[node name="Gender" type="Sprite2D" parent="Slots/Second"]
+position = Vector2(64, 25.5)
+texture = ExtResource("5_2q8x5")
+hframes = 2
+frame = 1
+
+[node name="Name" type="RichTextLabel" parent="Slots/Second"]
+offset_left = 21.0
+offset_top = 13.0
+offset_right = 81.0
+offset_bottom = 21.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "CHARMANDER"
+
+[node name="Level" type="RichTextLabel" parent="Slots/Second"]
+texture_filter = 1
+clip_contents = false
+offset_left = 42.0
+offset_top = 22.0
+offset_right = 52.0
+offset_bottom = 31.0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "5"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+language = "en"
+
+[node name="TotalHP" type="RichTextLabel" parent="Slots/Second"]
+clip_contents = false
+offset_left = 120.0
+offset_top = 22.0
+offset_right = 134.0
+offset_bottom = 32.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "250
+"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="RemainHP" type="RichTextLabel" parent="Slots/Second"]
+clip_contents = false
+offset_left = 96.0
+offset_top = 22.0
+offset_right = 110.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "250"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="Health" type="Sprite2D" parent="Slots/Second"]
+position = Vector2(86, 15)
+texture = ExtResource("6_utcu8")
+centered = false
+region_filter_clip_enabled = true
+
+[node name="Held_Item" type="TextureRect" parent="Slots/Second"]
+visible = false
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 17.0
+offset_bottom = 32.0
+texture = ExtResource("11_3svhx")
+stretch_mode = 2
+
+[node name="Status" type="TextureRect" parent="Slots/Second"]
+visible = false
+offset_left = 71.0
+offset_top = 22.0
+offset_right = 91.0
+offset_bottom = 30.0
+scale = Vector2(1, 0.8)
+texture = ExtResource("12_i0hvq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slots/Second"]
+libraries = {
+"": SubResource("AnimationLibrary_mswsx")
+}
+
+[node name="Switch" type="AnimationPlayer" parent="Slots/Second"]
+libraries = {
+"": SubResource("AnimationLibrary_j1dy6")
+}
+
+[node name="Third" type="Node2D" parent="Slots"]
+visible = false
+position = Vector2(-94, -24)
+
+[node name="Panel" type="Sprite2D" parent="Slots/Third"]
+position = Vector2(65, 21)
+texture = ExtResource("7_8kd4u")
+hframes = 2
+
+[node name="Pokemon" type="Sprite2D" parent="Slots/Third"]
+position = Vector2(5, 18)
+texture = ExtResource("3_mko3b")
+vframes = 2
+
+[node name="Gender" type="Sprite2D" parent="Slots/Third"]
+position = Vector2(64, 25.5)
+texture = ExtResource("5_2q8x5")
+hframes = 2
+frame = 1
+
+[node name="Name" type="RichTextLabel" parent="Slots/Third"]
+offset_left = 21.0
+offset_top = 13.0
+offset_right = 81.0
+offset_bottom = 21.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "CHARMANDER"
+
+[node name="Level" type="RichTextLabel" parent="Slots/Third"]
+texture_filter = 1
+clip_contents = false
+offset_left = 42.0
+offset_top = 22.0
+offset_right = 52.0
+offset_bottom = 31.0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "5"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+language = "en"
+
+[node name="TotalHP" type="RichTextLabel" parent="Slots/Third"]
+clip_contents = false
+offset_left = 120.0
+offset_top = 22.0
+offset_right = 134.0
+offset_bottom = 32.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="RemainHP" type="RichTextLabel" parent="Slots/Third"]
+clip_contents = false
+offset_left = 96.0
+offset_top = 22.0
+offset_right = 110.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="Health" type="Sprite2D" parent="Slots/Third"]
+position = Vector2(86, 15)
+texture = ExtResource("6_utcu8")
+centered = false
+region_filter_clip_enabled = true
+
+[node name="Held_Item" type="TextureRect" parent="Slots/Third"]
+visible = false
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 17.0
+offset_bottom = 32.0
+texture = ExtResource("11_3svhx")
+stretch_mode = 2
+
+[node name="Status" type="TextureRect" parent="Slots/Third"]
+visible = false
+offset_left = 71.0
+offset_top = 22.0
+offset_right = 91.0
+offset_bottom = 30.0
+scale = Vector2(1, 0.8)
+texture = ExtResource("12_i0hvq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slots/Third"]
+libraries = {
+"": SubResource("AnimationLibrary_mswsx")
+}
+
+[node name="Switch" type="AnimationPlayer" parent="Slots/Third"]
+libraries = {
+"": SubResource("AnimationLibrary_ufkc2")
+}
+
+[node name="Fourth" type="Node2D" parent="Slots"]
+visible = false
+position = Vector2(-94, 0)
+
+[node name="Panel" type="Sprite2D" parent="Slots/Fourth"]
+position = Vector2(65, 21)
+texture = ExtResource("7_8kd4u")
+hframes = 2
+
+[node name="Pokemon" type="Sprite2D" parent="Slots/Fourth"]
+position = Vector2(5, 18)
+texture = ExtResource("3_mko3b")
+vframes = 2
+
+[node name="Gender" type="Sprite2D" parent="Slots/Fourth"]
+position = Vector2(64, 25.5)
+texture = ExtResource("5_2q8x5")
+hframes = 2
+frame = 1
+
+[node name="Name" type="RichTextLabel" parent="Slots/Fourth"]
+offset_left = 21.0
+offset_top = 13.0
+offset_right = 81.0
+offset_bottom = 21.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "CHARMANDER"
+
+[node name="Level" type="RichTextLabel" parent="Slots/Fourth"]
+texture_filter = 1
+clip_contents = false
+offset_left = 42.0
+offset_top = 22.0
+offset_right = 52.0
+offset_bottom = 31.0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "5"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+language = "en"
+
+[node name="TotalHP" type="RichTextLabel" parent="Slots/Fourth"]
+clip_contents = false
+offset_left = 120.0
+offset_top = 22.0
+offset_right = 134.0
+offset_bottom = 32.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="RemainHP" type="RichTextLabel" parent="Slots/Fourth"]
+clip_contents = false
+offset_left = 96.0
+offset_top = 22.0
+offset_right = 110.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="Health" type="Sprite2D" parent="Slots/Fourth"]
+position = Vector2(86, 15)
+texture = ExtResource("6_utcu8")
+centered = false
+region_filter_clip_enabled = true
+
+[node name="Status" type="TextureRect" parent="Slots/Fourth"]
+visible = false
+offset_left = 71.0
+offset_top = 22.0
+offset_right = 91.0
+offset_bottom = 30.0
+scale = Vector2(1, 0.8)
+texture = ExtResource("12_i0hvq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slots/Fourth"]
+libraries = {
+"": SubResource("AnimationLibrary_mswsx")
+}
+
+[node name="Switch" type="AnimationPlayer" parent="Slots/Fourth"]
+libraries = {
+"": SubResource("AnimationLibrary_wp3f2")
+}
+
+[node name="Held_Item" type="TextureRect" parent="Slots/Fourth"]
+visible = false
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 17.0
+offset_bottom = 32.0
+texture = ExtResource("11_3svhx")
+stretch_mode = 2
+
+[node name="Fifth" type="Node2D" parent="Slots"]
+visible = false
+position = Vector2(-94, 24)
+
+[node name="Panel" type="Sprite2D" parent="Slots/Fifth"]
+position = Vector2(65, 21)
+texture = ExtResource("7_8kd4u")
+hframes = 2
+
+[node name="Pokemon" type="Sprite2D" parent="Slots/Fifth"]
+position = Vector2(5, 18)
+texture = ExtResource("3_mko3b")
+vframes = 2
+
+[node name="Gender" type="Sprite2D" parent="Slots/Fifth"]
+position = Vector2(64, 25.5)
+texture = ExtResource("5_2q8x5")
+hframes = 2
+frame = 1
+
+[node name="Name" type="RichTextLabel" parent="Slots/Fifth"]
+offset_left = 21.0
+offset_top = 13.0
+offset_right = 81.0
+offset_bottom = 21.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "CHARMANDER"
+
+[node name="Level" type="RichTextLabel" parent="Slots/Fifth"]
+texture_filter = 1
+clip_contents = false
+offset_left = 42.0
+offset_top = 22.0
+offset_right = 52.0
+offset_bottom = 31.0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "5"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+language = "en"
+
+[node name="TotalHP" type="RichTextLabel" parent="Slots/Fifth"]
+clip_contents = false
+offset_left = 120.0
+offset_top = 22.0
+offset_right = 134.0
+offset_bottom = 32.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="RemainHP" type="RichTextLabel" parent="Slots/Fifth"]
+clip_contents = false
+offset_left = 96.0
+offset_top = 22.0
+offset_right = 110.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="Health" type="Sprite2D" parent="Slots/Fifth"]
+position = Vector2(86, 15)
+texture = ExtResource("6_utcu8")
+centered = false
+region_filter_clip_enabled = true
+
+[node name="Status" type="TextureRect" parent="Slots/Fifth"]
+visible = false
+offset_left = 71.0
+offset_top = 22.0
+offset_right = 91.0
+offset_bottom = 30.0
+scale = Vector2(1, 0.8)
+texture = ExtResource("12_i0hvq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slots/Fifth"]
+libraries = {
+"": SubResource("AnimationLibrary_mswsx")
+}
+
+[node name="Switch" type="AnimationPlayer" parent="Slots/Fifth"]
+libraries = {
+"": SubResource("AnimationLibrary_yc77i")
+}
+
+[node name="Held_Item" type="TextureRect" parent="Slots/Fifth"]
+visible = false
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 17.0
+offset_bottom = 32.0
+texture = ExtResource("11_3svhx")
+stretch_mode = 2
+
+[node name="Sixth" type="Node2D" parent="Slots"]
+visible = false
+position = Vector2(-94, 48)
+
+[node name="Panel" type="Sprite2D" parent="Slots/Sixth"]
+position = Vector2(65, 21)
+texture = ExtResource("7_8kd4u")
+hframes = 2
+
+[node name="Pokemon" type="Sprite2D" parent="Slots/Sixth"]
+position = Vector2(5, 18)
+texture = ExtResource("3_mko3b")
+vframes = 2
+
+[node name="Gender" type="Sprite2D" parent="Slots/Sixth"]
+position = Vector2(64, 25.5)
+texture = ExtResource("5_2q8x5")
+hframes = 2
+frame = 1
+
+[node name="Name" type="RichTextLabel" parent="Slots/Sixth"]
+offset_left = 21.0
+offset_top = 13.0
+offset_right = 81.0
+offset_bottom = 21.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "CHARMANDER"
+
+[node name="Level" type="RichTextLabel" parent="Slots/Sixth"]
+texture_filter = 1
+clip_contents = false
+offset_left = 42.0
+offset_top = 22.0
+offset_right = 52.0
+offset_bottom = 31.0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "5"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+language = "en"
+
+[node name="TotalHP" type="RichTextLabel" parent="Slots/Sixth"]
+clip_contents = false
+offset_left = 120.0
+offset_top = 22.0
+offset_right = 134.0
+offset_bottom = 32.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="RemainHP" type="RichTextLabel" parent="Slots/Sixth"]
+clip_contents = false
+offset_left = 96.0
+offset_top = 22.0
+offset_right = 110.0
+offset_bottom = 31.0
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("3_r2g54")
+theme_override_colors/font_shadow_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_fonts/normal_font = ExtResource("4_tjowx")
+theme_override_font_sizes/normal_font_size = 9
+text = "12"
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+meta_underlined = false
+hint_underlined = false
+text_direction = 2
+language = "en"
+
+[node name="Health" type="Sprite2D" parent="Slots/Sixth"]
+position = Vector2(86, 15)
+texture = ExtResource("6_utcu8")
+centered = false
+region_filter_clip_enabled = true
+
+[node name="Status" type="TextureRect" parent="Slots/Sixth"]
+visible = false
+offset_left = 71.0
+offset_top = 22.0
+offset_right = 91.0
+offset_bottom = 30.0
+scale = Vector2(1, 0.8)
+texture = ExtResource("12_i0hvq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slots/Sixth"]
+libraries = {
+"": SubResource("AnimationLibrary_mswsx")
+}
+
+[node name="Switch" type="AnimationPlayer" parent="Slots/Sixth"]
+libraries = {
+"": SubResource("AnimationLibrary_h7o6p")
+}
+
+[node name="Held_Item" type="TextureRect" parent="Slots/Sixth"]
+visible = false
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 17.0
+offset_bottom = 32.0
+texture = ExtResource("11_3svhx")
+stretch_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="Select" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 151.0
+offset_top = 97.0
+offset_right = 238.0
+offset_bottom = 158.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Select"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_srpur")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Select"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -20.5
+offset_right = 79.0
+offset_bottom = 23.5
+grow_vertical = 2
+
+[node name="Shift" type="RichTextLabel" parent="Select/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("3_r2g54")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.862745, 0.862745, 1)
+text = "SHIFT"
+
+[node name="Summary" type="RichTextLabel" parent="Select/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("3_r2g54")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.862745, 0.862745, 1)
+text = "SUMMARY"
+
+[node name="Item" type="RichTextLabel" parent="Select/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("3_r2g54")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.862745, 0.862745, 1)
+text = "ITEM"
+
+[node name="Cancel" type="RichTextLabel" parent="Select/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("3_r2g54")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.862745, 0.862745, 1)
+text = "CANCEL"
+
+[node name="Cursor" type="TextureRect" parent="Select"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 10.5
+offset_right = 17.0
+offset_bottom = 20.5
+texture = ExtResource("13_186ck")
+stretch_mode = 2
+
+[node name="ItemSelect" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 151.0
+offset_top = 97.0
+offset_right = 238.0
+offset_bottom = 158.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ItemSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_srpur")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemSelect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -19.5
+offset_right = 94.0
+offset_bottom = 24.5
+grow_vertical = 2
+
+[node name="Give" type="RichTextLabel" parent="ItemSelect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("3_r2g54")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.862745, 0.862745, 1)
+text = "GIVE"
+
+[node name="Take" type="RichTextLabel" parent="ItemSelect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("3_r2g54")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.862745, 0.862745, 1)
+text = "TAKE"
+
+[node name="Cancel" type="RichTextLabel" parent="ItemSelect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme = ExtResource("3_r2g54")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.862745, 0.862745, 1)
+text = "CANCEL"
+
+[node name="Cursor" type="TextureRect" parent="ItemSelect"]
+layout_mode = 2
+offset_left = 23.0
+offset_top = 10.5
+offset_right = 32.0
+offset_bottom = 20.5
+texture = ExtResource("13_186ck")
+stretch_mode = 2

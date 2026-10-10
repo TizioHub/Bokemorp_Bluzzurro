@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhy8n67ibm6tm"]
+
+[ext_resource type="Script" path="res://Scenes/UI/save_scene.gd" id="1_ihpa7"]
+[ext_resource type="Texture2D" uid="uid://d3dxw0bsf6jxo" path="res://Assets/UI/marker_orange.png" id="2_th4p2"]
+[ext_resource type="Theme" uid="uid://cun343t873x4o" path="res://Scenes/UI/Menu/menu_theme.tres" id="3_88nxm"]
+
+[node name="SaveScene" type="CanvasLayer"]
+script = ExtResource("1_ihpa7")
+
+[node name="PlayerStats" type="NinePatchRect" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 124.0
+offset_bottom = 62.0
+texture = ExtResource("2_th4p2")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Location" type="RichTextLabel" parent="PlayerStats"]
+clip_contents = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 124.0
+offset_bottom = 21.0
+theme = ExtResource("3_88nxm")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.854902, 0.85098, 1)
+text = "OAK'S FARMER HOUSE"
+
+[node name="Player" type="RichTextLabel" parent="PlayerStats"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 24.0
+offset_right = 60.0
+offset_bottom = 36.0
+theme = ExtResource("3_88nxm")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.854902, 0.85098, 1)
+text = "PLAYER"
+
+[node name="Name" type="RichTextLabel" parent="PlayerStats"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 24.0
+offset_right = 113.0
+offset_bottom = 36.0
+theme = ExtResource("3_88nxm")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.854902, 0.85098, 1)
+text = "OAK
+"
+
+[node name="Time" type="RichTextLabel" parent="PlayerStats"]
+clip_contents = false
+layout_mode = 0
+offset_left = 72.0
+offset_top = 40.0
+offset_right = 129.0
+offset_bottom = 52.0
+theme = ExtResource("3_88nxm")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.854902, 0.85098, 1)
+theme_override_font_sizes/normal_font_size = 11
+text = "00:01:32
+"
+
+[node name="TimeLabel" type="RichTextLabel" parent="PlayerStats"]
+clip_contents = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 39.0
+offset_right = 44.0
+offset_bottom = 51.0
+theme = ExtResource("3_88nxm")
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.862745, 0.854902, 0.85098, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = "TIME.P"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
